@@ -1,0 +1,20 @@
+{
+    "name": "Euro Calculator",
+    "short_name": "EuroCalc",
+    "start_url": "../",
+    "categories": ["finance"],
+    "scope": "..",
+    "display": "standalone",    
+    "background_color": "#212529",
+    "theme_color": "#212529",
+    "description": "Calculates an expression from multiple currencies to Euro",
+    "orientation": "portrait",
+    "lang": "en",
+    "icons": [
+        {
+            "src": "/pwa/euro-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+      ]
+}
