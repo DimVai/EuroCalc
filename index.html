@@ -20,7 +20,11 @@
 
     <style>
         .btn{
-            min-width: 5ch;
+            --size: 4rem;
+            display: block;
+            width: var(--size);
+            height: var(--size);
+            font-size: 1.8rem;
         }
     </style>
         
@@ -38,7 +42,7 @@
             <label for="expression" class="form-label" >Expression</label>
             <input type="text" class="form-control fs-1" id="expression" inputmode="numeric">
             
-            <div class="d-flex justify-content-between my-3">
+            <div class="d-flex justify-content-between gap-1 my-3">
                 <button class="btn btn-primary btn-insert">+</button>
                 <button class="btn btn-success btn-insert">€</button>
                 <button class="btn btn-secondary btn-insert">$</button>
