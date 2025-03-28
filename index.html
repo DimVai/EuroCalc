@@ -26,6 +26,15 @@
             height: var(--size);
             font-size: 1.8rem;
         }
+        .btn.copy{
+            background-color: darkmagenta;
+            width: 8ch;
+            height: 3rem;
+            font-size: 1rem;
+        }
+        label{
+            font-size: 1.2rem;
+        }
     </style>
         
 </head>
@@ -51,9 +60,20 @@
 
             </div>
         </div>
-        <div class="my-4">
+        <div class="my-5">
             <label for="result" class="form-label">Result</label>
-            <h2 id="result" class="fs-1">0 €</h2>
+            <h2 class="fs-1"><span id="result">0</span> €</h2>
+            <button id="copy" class="btn btn-small copy small">Copy</button>
+        </div>
+
+
+        <div id="rates" class="d-none">
+            <label>Rates:</label>
+            <p>
+                1 $ = <span data-variable="EURUSD"></span> €
+            <br>
+                1 £ = <span data-variable="EURGBP"></span> €
+            </p>
         </div>
 
 
@@ -61,8 +81,8 @@
             <hr>
             <label for="apikey" class="form-label" >freecurrencyapi.com API Key</label>
             <input type="text" class="form-control fs-1" id="apikey">
-            <small>Paste your freecurrencyapi.com API Key here and refresh the page. 
-                You can find the key <a target="_blank" href="https://app.freecurrencyapi.com/dashboard">here</a></small>
+            <small>No API or wrong API key found. Paste your freecurrencyapi.com API Key here and refresh the page. 
+                You can get the key <a target="_blank" href="https://app.freecurrencyapi.com/dashboard">here</a></small>
         </div>
 
 
