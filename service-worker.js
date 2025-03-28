@@ -22,9 +22,14 @@ self.addEventListener('activate', event => {
 
 //********************            CACHING STRATEGY            //********************
 
-// on everything (use cache only when offline)
+// prefer internet on API calls or JavaScript fetch requests
+workbox.routing.registerRoute(
+    ({ url, request }) => url.pathname.includes('/api/') || request.destination === "fetch",
+    new workbox.strategies.NetworkFirst(),
+);
+
+// prefer cache but refresh on everything else (use cache only when offline)
 workbox.routing.registerRoute(
     new RegExp('.*'),   // everything
     new workbox.strategies.StaleWhileRevalidate() // cache first, then update cache
-    // new workbox.strategies.NetworkFirst() // network first, then cache
 ); 
