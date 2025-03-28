@@ -21,16 +21,33 @@
     <style>
         .btn{
             --size: 4rem;
+            --color: black;
             display: block;
             width: var(--size);
             height: var(--size);
             font-size: 1.8rem;
+            background-color: var(--color);
+            color: var(--bs-light);
+            border: none;
         }
-        .btn.copy{
-            background-color: darkmagenta;
+        .btn.btn-action{
             width: 8ch;
             height: 3rem;
             font-size: 1rem;
+        }
+        .btn-pinkpurple{ --color: purple }
+        .btn-secondary{ --color: darkslategray }
+        .btn-primary{ --color: blue }
+        .btn-green{ --color: darkgreen }
+        .btn-purple{ --color: DarkSlateBlue }
+        .btn-copy{ --color: darkmagenta }
+        .btn-clear{ --color: firebrick }
+        .btn:active,.btn:focus,.btn:focus-visible,.btn:focus-within,.btn:hover{
+            background-color: var(--color);
+        }
+        .btn-multiply span {
+            position: relative;
+            top: 0.4rem; /* Ρύθμισε την τιμή ανάλογα με το design σου */
         }
         label{
             font-size: 1.2rem;
@@ -52,18 +69,22 @@
             <input type="text" class="form-control fs-1" id="expression" inputmode="numeric">
             
             <div class="d-flex justify-content-between gap-1 my-3">
-                <button class="btn btn-primary btn-insert">+</button>
-                <button class="btn btn-success btn-insert">€</button>
-                <button class="btn btn-secondary btn-insert">$</button>
-                <button class="btn btn-info btn-insert">£</button>
-                <button class="btn btn-danger btn-clear">⍉</button>
+                <button class="btn btn-pinkpurple btn-insert">+</button>
+                <button class="btn btn-secondary btn-insert btn-multiply"><span>*</span></button>
+                <button class="btn btn-primary btn-insert">€</button>
+                <button class="btn btn-green btn-insert">$</button>
+                <button class="btn btn-purple btn-insert">£</button>
+                
 
             </div>
         </div>
         <div class="my-5">
             <label for="result" class="form-label">Result</label>
             <h2 class="fs-1"><span id="result">0</span> €</h2>
-            <button id="copy" class="btn btn-small copy small">Copy</button>
+            <div class="d-flex gap-2">
+                <button id="copy" class="btn btn-action btn-copy">Copy</button>
+                <button class="btn btn-action btn-clear">Clear</button>
+            </div>
         </div>
 
 
