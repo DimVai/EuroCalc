@@ -19,6 +19,7 @@
     <script defer src="pwa/pwa.js"></script>
 
     <style>
+        h1{ margin-block: 2rem; }
         .btn{
             --size: 4rem;
             --color: black;
@@ -55,16 +56,16 @@
     </style>
         
 </head>
-<body data-bs-theme="dark" class="p-4">
+<body data-bs-theme="dark" class="px-3">
 
     <header>
         <h1 class="text-center">Euro Calculator</h1>
     </header>
 
 
-    <main x-data>
+    <main>
 
-        <div class="my-4">
+        <div class="card bg-dark border-secondary my-4 p-3">
             <label for="expression" class="form-label" >Expression</label>
             <input type="text" class="form-control fs-1" id="expression" inputmode="numeric">
             
@@ -78,7 +79,7 @@
 
             </div>
         </div>
-        <div class="my-5">
+        <div class="card bg-dark border-secondary my-4 px-3 py-4">
             <label for="result" class="form-label">Result</label>
             <h2 class="fs-1"><span id="result">0</span> €</h2>
             <div class="d-flex gap-2">
@@ -88,7 +89,7 @@
         </div>
 
 
-        <div id="rates" class="d-none">
+        <div id="rates" class="card bg-dark border-secondary my-4 p-3 d-none">
             <label>Rates:</label>
             <p>
                 1 $ = <span data-variable="EURUSD"></span> €
@@ -98,10 +99,9 @@
         </div>
 
 
-        <div class="d-none" id="api">
-            <hr>
+        <div class="card bg-dark border-secondary my-4 px-3 py-4 d-none" id="api">
             <label for="apikey" class="form-label" >freecurrencyapi.com API Key</label>
-            <input type="text" class="form-control fs-1" id="apikey">
+            <input type="text" class="form-control fs-1 my-2" id="apikey">
             <small>No API or wrong API key found. Paste your freecurrencyapi.com API Key here and refresh the page. 
                 You can get the key <a target="_blank" href="https://app.freecurrencyapi.com/dashboard">here</a></small>
         </div>
