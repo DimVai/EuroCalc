@@ -19,7 +19,13 @@
     <script defer src="pwa/pwa.js"></script>
 
     <style>
-        h1{ margin-block: 2rem; }
+        h1{ 
+            margin-block: 1.5rem; 
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        /* Κουμπιά νομισμάτων */
         .btn{
             --size: 4rem;
             --color: black;
@@ -30,28 +36,125 @@
             background-color: var(--color);
             color: var(--bs-light);
             border: none;
+            border-radius: 1rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
+        
+        /* Action buttons - καλύτερο μέγεθος για touch */
         .btn.btn-action{
-            width: 8ch;
-            height: 3rem;
-            font-size: 1rem;
+            width: auto;
+            min-width: 8ch;
+            height: 3.5rem;
+            font-size: 1.1rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
         }
+        
+        /* Χρώματα κουμπιών */
         .btn-pinkpurple{ --color: purple }
-        .btn-secondary{ --color: darkslategray }
-        .btn-primary{ --color: blue }
-        .btn-green{ --color: darkgreen }
-        .btn-purple{ --color: DarkSlateBlue }
+        .btn-secondary{ --color: #34495e }
+        .btn-blue{ --color: #114bff }
+        .btn-green{ --color: #0e8741 }
+        .btn-purple{ --color: #5445c7 }
         .btn-copy{ --color: darkmagenta }
-        .btn-clear{ --color: firebrick }
+        .btn-clear{ --color: #c0392b }
+        
+        /* Hover/Active states */
         .btn:active,.btn:focus,.btn:focus-visible,.btn:focus-within,.btn:hover{
             background-color: var(--color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
         }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
         .btn-multiply span {
             position: relative;
-            top: 0.4rem; /* Ρύθμισε την τιμή ανάλογα με το design σου */
+            top: 0.3rem;
         }
+        
+        /* Labels */
         label{
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        
+        /* Input fields - μεγαλύτερα για κινητά */
+        .form-control {
+            border-radius: 0.75rem;
+            border: 2px solid #495057;
+            transition: all 0.2s ease;
+        }
+        
+        .form-control:focus {
+            border-color: #6c5ce7;
+            box-shadow: 0 0 0 0.2rem rgba(108, 92, 231, 0.25);
+        }
+        
+        #expression {
+            font-size: 1.8rem !important;
+            padding: 1rem;
+            min-height: 4rem;
+        }
+        
+        #apikey {
+            font-size: 1rem !important;
+            padding: 0.75rem;
+        }
+        
+        /* Cards - καλύτερο spacing */
+        .card {
+            border-radius: 1rem;
+            border: 2px solid #495057 !important;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+            margin-bottom: 1.5rem !important;
+        }
+        
+        /* Result section */
+        #result {
+            color: #27ae60;
+            font-weight: 700;
+        }
+        
+        /* Rates section */
+        #rates p {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* API section styling */
+        #api small {
+            font-size: 0.9rem;
+            color: #adb5bd;
+            line-height: 1.4;
+        }
+        
+        /* Grid για κουμπιά */
+        .currency-buttons {
+            display: flex;
+            grid-template-columns: repeat(5, 1fr);
+            justify-content: space-between;    
+            margin: 1.5rem 0;
+        }
+        
+        /* Responsive για μικρότερες οθόνες */
+        @media (max-width: 380px) {
+            .btn {
+                --size: 3.5rem;
+                font-size: 1.6rem;
+            }
+            
+            .currency-buttons {
+                gap: 0.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
         }
     </style>
         
@@ -67,16 +170,14 @@
 
         <div class="card bg-dark border-secondary my-4 p-3">
             <label for="expression" class="form-label" >Expression</label>
-            <input type="text" class="form-control fs-1" id="expression" inputmode="numeric">
+            <input type="text" class="form-control" id="expression" inputmode="numeric">
             
-            <div class="d-flex justify-content-between gap-1 my-3">
+            <div class="currency-buttons">
                 <button class="btn btn-pinkpurple btn-insert">+</button>
                 <button class="btn btn-secondary btn-insert btn-multiply"><span>*</span></button>
-                <button class="btn btn-primary btn-insert">€</button>
+                <button class="btn btn-blue btn-insert">€</button>
                 <button class="btn btn-green btn-insert">$</button>
                 <button class="btn btn-purple btn-insert">£</button>
-                
-
             </div>
         </div>
         <div class="card bg-dark border-secondary my-4 px-3 py-4">
@@ -101,7 +202,7 @@
 
         <div class="card bg-dark border-secondary my-4 px-3 py-4 d-none" id="api">
             <label for="apikey" class="form-label" >freecurrencyapi.com API Key</label>
-            <input type="text" class="form-control fs-1 my-2" id="apikey">
+            <input type="text" class="form-control my-2" id="apikey">
             <small>No API or wrong API key found. Paste your freecurrencyapi.com API Key here and refresh the page. 
                 You can get the key <a target="_blank" href="https://app.freecurrencyapi.com/dashboard">here</a></small>
         </div>
